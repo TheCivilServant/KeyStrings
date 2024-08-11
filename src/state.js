@@ -1,14 +1,16 @@
 import { logTuning } from "./logger";
-//const logTuning = require("./logger");
 
 const tuningSelection = document.querySelector("#tuningSelectList");
 
 let selectedTuning = "Standard";
 const stringOrder = [];
 
-tuningSelection.addEventListener("change", (event) => {
-  selectedTuning = event.target.value;
-  logTuning();
+//using a callback that is executed when the document has loaded, otherwise eventListener is null
+document.addEventListener("DOMContentLoaded", function () {
+  tuningSelection.addEventListener("change", (event) => {
+    selectedTuning = event.target.value;
+    logTuning();
+  });
 });
 
 function populateStringOrder(
@@ -21,10 +23,3 @@ function populateStringOrder(
 ) {}
 
 export { selectedTuning, stringOrder, populateStringOrder };
-/*
-module.exports = {
-  selectedTuning,
-  stringOrder,
-  populateStringOrder,
-};
-*/
